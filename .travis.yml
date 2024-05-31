@@ -2,6 +2,7 @@ language: generic
 
 keys:
   - SSH_KEY_FOR_SIGNING
+  - TEST_SING_KEY2
 
 env:
   global: IMAGE_NAME=test878/tagname:latest
@@ -17,7 +18,7 @@ before_script:
   # - chmod 600 cosign.key
   # - ls -l cosign.key
   # - echo $TEST_SING_KEY
-  - travis_key $TEST_SING_KEY2 cosign_test.key
+  - travis_key TEST_SING_KEY2 cosign_test.key
   # - travis_key SSH_KEY_FOR_SIGNING cosign.key
   # - cat cosign.key
   # - travis_key $SSH_KEY_FOR_SIGNING cosign.key
