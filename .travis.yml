@@ -2,8 +2,7 @@ language: generic
 
 keys:
   - SSH_KEY_FOR_SIGNING
-  - TEST_SING_KEY2
-  - TEST_PEM
+
 
 env:
   global:
@@ -28,13 +27,14 @@ before_script:
   # - travis_key SSH_KEY_FOR_SIGNING cosign.key
   # - cat cosign.key
   # - travis_key TEST_PEM cosign_test.key
-  # - echo "$TEST_PEM" | base64 --decode > cosign_test.key
-  # - chmod 600 cosign_test.key
+  - echo "$TEST_SING_KEY3" | base64 --decode > cosign_test.key
+  - chmod 600 cosign_test.key
   
 
 script:
   - docker pull $IMAGE_NAME # Pull the image to ensure it exists
-  - yes | cosign sign --key cosign.key $IMAGE_NAME # Sign the actual image
+  #- yes | cosign sign --key cosign.key $IMAGE_NAME # Sign the actual image
+  - yes | cosign sign --key cosign_test.key $IMAGE_NAME # Sign the actual image
 
 after_script:
   - docker logout
