@@ -18,12 +18,12 @@ before_script:
   # - chmod 600 cosign.key
   # - ls -l cosign.key
   # - echo $TEST_SING_KEY
-  - travis_key TEST_SING_KEY2 cosign_test.key
+  #- travis_key TEST_SING_KEY2 cosign_test.key
   # - travis_key SSH_KEY_FOR_SIGNING cosign.key
   # - cat cosign.key
   # - travis_key $SSH_KEY_FOR_SIGNING cosign.key
-  # - echo "$SSH_KEY_FOR_SIGNING" | base64 --decode > $COSIGN_KEY
-  # - chmod 600 $COSIGN_KEY
+   - echo "$TEST_SING_KEY2" | base64 --decode > cosign_test.key
+   - chmod 600 cosign_test.key
   
 
 script:
