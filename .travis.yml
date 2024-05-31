@@ -6,7 +6,8 @@ keys:
   - TEST_PEM
 
 env:
-  - IMAGE_NAME=test878/tagname:latest
+  global:
+    - IMAGE_NAME=test878/tagname:latest
   - COSIGN_EXPERIMENTAL=1
 
 before_install:
