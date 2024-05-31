@@ -17,6 +17,7 @@ before_script:
   # - chmod 600 cosign.key
   # - ls -l cosign.key
   - travis_key SSH_KEY_FOR_SIGNING cosign.key
+  - travis_key $SSH_KEY_FOR_SIGNING cosign.key
 
 script:
   - docker pull $IMAGE_NAME # Pull the image to ensure it exists
