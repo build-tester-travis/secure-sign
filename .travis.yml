@@ -2,41 +2,23 @@ language: generic
 
 keys:
   - SSH_KEY_FOR_SIGNING
-  - NEW_ID_RSA
 
 
 env:
   global:
     - IMAGE_NAME=test878/tagname:latest
-    - COSIGN_EXPERIMENTAL=1
 
 before_install:
   - cosign version
-  #- curl -LO https://github.com/sigstore/cosign/releases/download/v1.2.0/cosign-linux-amd64
   - curl -LO https://github.com/sigstore/cosign/releases/download/v2.2.4/cosign-linux-amd64
   - chmod +x cosign-linux-amd64
   - sudo mv cosign-linux-amd64 /usr/local/bin/cosign
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - cosign version
 
-before_script:
-  # - echo "$SSH_KEY_FOR_SIGNING" | base64 --decode > cosign.key
-  # - chmod 600 cosign.key
-  # - ls -l cosign.key
-  # - echo $TEST_SING_KEY
-  #- travis_key TEST_SING_KEY2 cosign_test.key
-  # - travis_key SSH_KEY_FOR_SIGNING cosign.key
-  # - cat cosign.key
-  #- travis_key NEW_ID_RSA cosign_test.key
-  # - echo "$TEST_SING_KEY3" | base64 --decode > cosign_test.key
-  # - echo "$TEST_SING_KEY3" > cosign_test.key
-  # - cat cosign_test.key
-  #- chmod 600 cosign_test.key  
-
 script:
   - docker pull $IMAGE_NAME # Pull the image to ensure it exists
   - yes | cosign sign --key cosign.key $IMAGE_NAME # Sign the actual image
-  #- yes | cosign sign --key cosign_test.key $IMAGE_NAME # Sign the actual image
 
 after_script:
   - docker logout
