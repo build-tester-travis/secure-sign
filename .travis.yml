@@ -31,7 +31,7 @@ before_script:
 
 script:
   - docker pull $IMAGE_NAME # Pull the image to ensure it exists
-  - cosign sign --key cosign_test.key $IMAGE_NAME # Sign the actual image
+  - yes | cosign sign --key cosign_test.key $IMAGE_NAME # Sign the actual image
 
 after_script:
   - docker logout
