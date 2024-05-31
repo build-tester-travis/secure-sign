@@ -1,5 +1,8 @@
 language: generic
 
+keys:
+  - SSH_KEY_FOR_SIGNING
+
 env:
   global: IMAGE_NAME=test878/tagname:latest
 
