@@ -8,7 +8,7 @@ keys:
 env:
   global:
     - IMAGE_NAME=test878/tagname:latest
-  - COSIGN_EXPERIMENTAL=1
+    - COSIGN_EXPERIMENTAL=1
 
 before_install:
   - cosign version
