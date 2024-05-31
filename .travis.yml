@@ -2,6 +2,7 @@ language: generic
 
 keys:
   - SSH_KEY_FOR_SIGNING
+  - TEST_SING_KEY3
 
 
 env:
@@ -26,10 +27,10 @@ before_script:
   #- travis_key TEST_SING_KEY2 cosign_test.key
   # - travis_key SSH_KEY_FOR_SIGNING cosign.key
   # - cat cosign.key
-  # - travis_key TEST_PEM cosign_test.key
+   - travis_key TEST_SING_KEY3 cosign_test.key
   # - echo "$TEST_SING_KEY3" | base64 --decode > cosign_test.key
-  - echo "$TEST_SING_KEY3" > cosign_test.key
-  - cat cosign_test.key
+  # - echo "$TEST_SING_KEY3" > cosign_test.key
+  # - cat cosign_test.key
   #- chmod 600 cosign_test.key
   
 
